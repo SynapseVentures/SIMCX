@@ -90,7 +90,9 @@ const config: Config = {
           position: 'left',
           label: 'Knowledge Base',
         },
-        {to: '/blog', label: 'Updates', position: 'left'},
+  {to: '/blog', label: 'Updates', position: 'left'},
+  {to: '/roles', label: 'Roles', position: 'left'},
+  {to: '/docs/handbook/intro', label: 'Handbook', position: 'left'},
         {
           href: process.env.GITHUB_REPO_URL || 'https://github.com/SynapseVentures/SIMCX',
           label: 'GitHub Repo',
