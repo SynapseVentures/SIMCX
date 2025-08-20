@@ -35,11 +35,11 @@ jobs:
           echo "GITHUB_REPO_URL=${GITHUB_REPO_URL}"
       - name: Build
         env:
-          SITE_URL: https://$GITHUB_REPOSITORY_OWNER.github.io
-          BASE_URL: /${{ github.event.repository.name }}/
-          GITHUB_ORG: ${{ github.repository_owner }}
-          GITHUB_REPO: ${{ github.event.repository.name }}
-          GITHUB_REPO_URL: https://github.com/${{ github.repository }}
+          SITE_URL: https://synapseventures.github.io
+          BASE_URL: /SIMCX/
+          GITHUB_ORG: SynapseVentures
+          GITHUB_REPO: SIMCX
+          GITHUB_REPO_URL: https://github.com/SynapseVentures/SIMCX
         run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
