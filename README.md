@@ -1,5 +1,7 @@
 # Airbus Knowledge Transfer Site
 
+[![Deploy to GitHub Pages](https://github.com/SynapseVentures/SIMCX/actions/workflows/deploy.yml/badge.svg)](https://github.com/SynapseVentures/SIMCX/actions/workflows/deploy.yml)
+
 React + Docusaurus site for Airbus knowledge sharing: onboarding, architecture, and runbooks.
 
 Live site (GitHub Pages): https://synapseventures.github.io/SIMCX/
