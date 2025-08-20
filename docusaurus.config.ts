@@ -47,10 +47,11 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // Enable "Edit this page" linking to GitHub web editor for docs
+          // Builds a URL like:
+          // https://github.com/SynapseVentures/SIMCX/edit/main/npm/airbus-knowledge/<versionDocsDirPath>/<docPath>
+          editUrl: ({versionDocsDirPath, docPath}) =>
+            `https://github.com/SynapseVentures/SIMCX/edit/main/npm/airbus-knowledge/${versionDocsDirPath}/${docPath}`,
         },
         blog: {
           showReadingTime: true,
@@ -58,10 +59,9 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // Enable "Edit this page" linking to GitHub web editor for blog posts
+          editUrl: ({blogDirPath, blogPath}) =>
+            `https://github.com/SynapseVentures/SIMCX/edit/main/npm/airbus-knowledge/${blogDirPath}/${blogPath}`,
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -97,6 +97,7 @@ const config: Config = {
   {to: '/roles/', label: 'Roles', position: 'left'},
   {to: '/bpmn-editor/', label: 'BPMN Editor', position: 'left'},
   {to: '/docs/handbook/intro', label: 'Handbook', position: 'left'},
+  {to: '/process/role1/process-x', label: 'Demo Process', position: 'left'},
         {
           href: process.env.GITHUB_REPO_URL || 'https://github.com/SynapseVentures/SIMCX',
           label: 'GitHub Repo',

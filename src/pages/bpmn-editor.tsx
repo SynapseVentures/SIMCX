@@ -25,12 +25,26 @@ export default function BpmnEditorPage() {
   useEffect(() => {
     if (!containerRef.current) return;
     modelerRef.current = new BpmnJS({container: containerRef.current});
-    // Load default
-    fetch(defaultUrl)
-      .then((r) => r.text())
-      .then((xml) => modelerRef.current?.importXML(xml))
-      .then(() => setStatus('Loaded sample.bpmn'))
-      .catch((e) => setStatus(`Load error: ${String(e)}`));
+    // Load default diagram; if it fails, fall back to a new blank diagram
+    (async () => {
+      try {
+        const res = await fetch(defaultUrl);
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+        const xml = await res.text();
+        await (modelerRef.current as any).importXML(xml);
+        // fit to viewport
+        (modelerRef.current as any).get('canvas').zoom('fit-viewport');
+        setStatus('Loaded sample.bpmn');
+      } catch (e) {
+        try {
+          await (modelerRef.current as any).createDiagram();
+          (modelerRef.current as any).get('canvas').zoom('fit-viewport');
+          setStatus('Started new blank diagram');
+        } catch (err) {
+          setStatus(`Load error: ${String(err || e)}`);
+        }
+      }
+    })();
     return () => modelerRef.current?.destroy();
   }, [defaultUrl]);
 
@@ -52,6 +66,16 @@ export default function BpmnEditorPage() {
     }
   }
 
+  async function handleNewDiagram() {
+    try {
+      await (modelerRef.current as any).createDiagram();
+      (modelerRef.current as any).get('canvas').zoom('fit-viewport');
+      setStatus('New blank diagram');
+    } catch (e) {
+      setStatus(`New diagram error: ${String(e)}`);
+    }
+  }
+
   async function handleOpenFile(ev: React.ChangeEvent<HTMLInputElement>) {
     const file = ev.target.files?.[0];
     if (!file) return;
@@ -69,6 +93,7 @@ export default function BpmnEditorPage() {
       <main className="container margin-vert--lg">
         <div className="margin-bottom--md">
           <input type="file" accept=".bpmn,.xml" onChange={handleOpenFile} />
+          <button className="button margin-left--sm" onClick={handleNewDiagram}>New</button>
           <button className="button button--primary margin-left--sm" onClick={handleSaveXML}>Save XML</button>
           <button className="button button--secondary margin-left--sm" onClick={handleSaveSVG}>Save SVG</button>
           <span className="margin-left--md">{status}</span>
