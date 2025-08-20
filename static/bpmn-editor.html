@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/SIMCX/bpmn-editor/" />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p>Redirecting to <a href="/SIMCX/bpmn-editor/">/SIMCX/bpmn-editor/</a>…</p>
+    <script>
+      // Extra safety for client-side routing
+      (function() {
+        var base = '/SIMCX';
+        var dest = base + '/bpmn-editor/';
+        if (location.pathname.endsWith('/bpmn-editor')) {
+          location.replace(dest);
+        } else {
+          // Handle being served under an unexpected base
+          var path = (document.baseURI || '').replace(location.origin, '') || '';
+          var guessBase = path.split('/').slice(0, 2).join('/') || '';
+          location.replace(guessBase + '/bpmn-editor/');
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -74,6 +74,9 @@ const config: Config = {
     ],
   ],
 
+  // No plugins needed; redirects for certain routes are handled via static HTML files in /static
+  plugins: [],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
@@ -91,8 +94,8 @@ const config: Config = {
           label: 'Knowledge Base',
         },
   {to: '/blog', label: 'Updates', position: 'left'},
-  {to: '/roles', label: 'Roles', position: 'left'},
-  {to: '/bpmn-editor', label: 'BPMN Editor', position: 'left'},
+  {to: '/roles/', label: 'Roles', position: 'left'},
+  {to: '/bpmn-editor/', label: 'BPMN Editor', position: 'left'},
   {to: '/docs/handbook/intro', label: 'Handbook', position: 'left'},
         {
           href: process.env.GITHUB_REPO_URL || 'https://github.com/SynapseVentures/SIMCX',

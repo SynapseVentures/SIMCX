@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/SIMCX/roles/" />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p>Redirecting to <a href="/SIMCX/roles/">/SIMCX/roles/</a>…</p>
+    <script>
+      (function() {
+        var base = '/SIMCX';
+        var dest = base + '/roles/';
+        if (location.pathname.endsWith('/roles')) {
+          location.replace(dest);
+        } else {
+          var path = (document.baseURI || '').replace(location.origin, '') || '';
+          var guessBase = path.split('/').slice(0, 2).join('/') || '';
+          location.replace(guessBase + '/roles/');
+        }
+      })();
+    </script>
+  </body>
+</html>
