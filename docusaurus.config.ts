@@ -89,7 +89,7 @@ const config: Config = {
         },
         {to: '/blog', label: 'Updates', position: 'left'},
         {
-          href: process.env.GITHUB_REPO_URL || 'https://github.com/your-org/airbus-knowledge',
+          href: process.env.GITHUB_REPO_URL || 'https://github.com/SynapseVentures/SIMCX',
           label: 'GitHub Repo',
           position: 'right',
         },
@@ -132,7 +132,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: process.env.GITHUB_REPO_URL || 'https://github.com/your-org/airbus-knowledge',
+              href: process.env.GITHUB_REPO_URL || 'https://github.com/SynapseVentures/SIMCX',
             },
           ],
         },
