@@ -2,6 +2,8 @@
 
 React + Docusaurus site for Airbus knowledge sharing: onboarding, architecture, and runbooks.
 
+Live site (GitHub Pages): https://synapseventures.github.io/SIMCX/
+
 ## Installation
 
 ```bash
