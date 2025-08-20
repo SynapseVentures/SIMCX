@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkairbus_knowledge=self.webpackChunkairbus_knowledge||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/SIMCX/blog","blogTitle":"Blog","authorsListPath":"/SIMCX/blog/authors"}')}}]);
