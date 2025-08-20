@@ -14,12 +14,15 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
+  // Safer for GitHub Pages: ensures directory URLs (/path/) map to index.html
+  trailingSlash: true,
+
   // Set the production url of your site here
-  // When deploying to GitHub Pages, set SITE_URL to 'https://<org>.github.io'
-  url: process.env.SITE_URL || 'https://example.github.io',
+  // Defaults target the SynapseVentures/SIMCX GitHub Pages project site
+  url: process.env.SITE_URL || 'https://synapseventures.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL || '/airbus-knowledge/',
+  baseUrl: process.env.BASE_URL || '/SIMCX/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
