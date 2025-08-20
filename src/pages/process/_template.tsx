@@ -18,6 +18,7 @@ export default function RoleProcessTemplate(_props: Props) {
   const process = 'process-x';
   const bpmnRel = `/bpmn/${role}/${process}.bpmn`;
   const handbookRel = `/docs/handbook/${role}/${process}`;
+  const handbookHref = useBaseUrl(handbookRel);
   const handbookPath = `npm/airbus-knowledge/docs/handbook/${role}/${process}.md`;
   const bpmnPath = `npm/airbus-knowledge/static/bpmn/${role}/${process}.bpmn`;
 
@@ -35,19 +36,22 @@ export default function RoleProcessTemplate(_props: Props) {
 
   // Load current handbook Markdown on first toggle into edit mode
   useEffect(() => {
+    let cancelled = false;
     (async () => {
-      if (!editMode) return;
       try {
+        if (!editMode) return;
         const settings = loadSettings();
         if (!settings) return;
         const f = await getFile(settings, handbookPath, settings.branch);
+        if (cancelled) return;
         if (f.content) setMd(f.content);
         if (f.sha) setMdSha(f.sha);
       } catch (e) {
-        setMdStatus(`Load error: ${String(e)}`);
+        if (!cancelled) setMdStatus(`Load error: ${String(e)}`);
       }
     })();
-  }, [editMode]);
+    return () => { cancelled = true; };
+  }, [editMode, handbookPath]);
 
   // In edit mode, we’ll start with a blank BPMN unless we load from GitHub
   // Offer a Load button to fetch current XML from GitHub.
@@ -154,7 +158,7 @@ export default function RoleProcessTemplate(_props: Props) {
             {!editMode && (
               <>
                 <p className="margin-bottom--sm">Context, steps, and guidance for this process.</p>
-                <a className="button button--sm button--primary" href={useBaseUrl(handbookRel)}>Open handbook</a>
+                <a className="button button--sm button--primary" href={handbookHref}>Open handbook</a>
               </>
             )}
             {editMode && (

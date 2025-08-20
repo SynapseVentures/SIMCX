@@ -2,29 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { GitHubSettings, loadSettings, saveSettings } from '../utils/githubClient';
 
 export default function GitHubSettingsForm() {
-  const [settings, setSettings] = useState<GitHubSettings | null>(null);
+  const [settings, setSettings] = useState<GitHubSettings | null>({
+    owner: 'SynapseVentures',
+    repo: 'SIMCX',
+    branch: 'main',
+    token: '',
+  });
   const [saved, setSaved] = useState('');
 
   useEffect(() => {
-    setSettings(
-      loadSettings() || {
-        owner: 'SynapseVentures',
-        repo: 'SIMCX',
-        branch: 'main',
-        token: '',
-      },
-    );
+    const s = loadSettings();
+    if (s) setSettings(s);
   }, []);
 
-  if (!settings) return null;
-
   function update<K extends keyof GitHubSettings>(key: K, value: GitHubSettings[K]) {
-    setSettings({...settings, [key]: value});
+  setSettings(prev => ({...(prev as GitHubSettings), [key]: value}));
   }
 
   function handleSave(e: React.FormEvent) {
     e.preventDefault();
-    saveSettings(settings);
+  saveSettings(settings as GitHubSettings);
     setSaved('Saved');
     setTimeout(() => setSaved(''), 1500);
   }
