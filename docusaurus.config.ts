@@ -24,8 +24,8 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   // Update these to your GitHub org/user and repo for Pages deployment
-  organizationName: process.env.GITHUB_ORG || 'your-org',
-  projectName: process.env.GITHUB_REPO || 'airbus-knowledge',
+  organizationName: process.env.GITHUB_ORG || 'SynapseVentures',
+  projectName: process.env.GITHUB_REPO || 'SIMCX',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

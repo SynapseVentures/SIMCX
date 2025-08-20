@@ -26,6 +26,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: ./
+      - name: Print build env
+        run: |
+          echo "SITE_URL=${SITE_URL}"
+          echo "BASE_URL=${BASE_URL}"
+          echo "GITHUB_ORG=${GITHUB_ORG}"
+          echo "GITHUB_REPO=${GITHUB_REPO}"
+          echo "GITHUB_REPO_URL=${GITHUB_REPO_URL}"
       - name: Build
         env:
           SITE_URL: https://$GITHUB_REPOSITORY_OWNER.github.io
@@ -45,5 +52,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/configure-pages@v5
       - id: deployment
         uses: actions/deploy-pages@v4
